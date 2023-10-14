@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang Web EJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        .detail {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .search-results {
+            position: absolute;
+            top: 50px; /* Vị trí phía trên ô tìm kiếm */
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            display: none; /* Ẩn mặc định */
+        }
+
+        .search-results.show {
+            background-color: rgba(0, 0, 0, 0.9); /* Màu nền đen hoàn toàn */
+        }
+
+        .search-results.show th,
+        .search-results.show td {
+            color: white; /* Màu chữ trắng */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Tìm kiếm dữ liệu</h1>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Tìm kiếm..." id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="searchButton">Tìm kiếm</button>
+                </div>
+            </div>
+            <div id="searchResults" class="search-results">
+                <h2>Kết quả tìm kiếm</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Field 1</th>
+                        <th>Field 2</th>
+                    </tr>
+                    </thead>
+                    <tbody id="searchResultsBody">
+                    <!-- Thêm kết quả tìm kiếm vào đây -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Danh sách</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Field 1</th>
+                    <th>Field 2</th>
+                    <th>Field 3</th>
+                    <th>Field 4</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through your listTasks to populate the table rows -->
+                <% for (let i = 0; i < listTasks.length; i++) { %>
+                    <tr>
+                        <td><%= listTasks[i].id %></td>
+                        <td><%= listTasks[i].full_name %></td>
+                        <td><%= listTasks[i].contents %></td>
+                        <td><%= listTasks[i].type %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h2>Chi tiết</h2>
+            <div class="detail">
+                <div class="detail">
+                    <div>Field 1:
+                        <div id="id"></div>
+                    </div>
+                    <div>Field 2:
+                        <div id="full_name"></div>
+                    </div>
+                    <div>Field 3:
+                        <div id="contents"></div>
+                    </div>
+                    <div>Field 4:
+                        <div id="type"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/inquiry_info_page.js"></script>
+</body>
+</html>
