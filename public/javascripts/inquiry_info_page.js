@@ -21,7 +21,7 @@ $(document).ready(function () {
                     for (let i = 0; i < response['data'].length; i++) {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                <td>${response['data'][i]['contents']}</td>
+                <td class="search" id="${response['data'][i]['id']}">${response['data'][i]['contents']}</td>
                 <td>${response['data'][i]['type']}</td>
             `;
                         searchResultsBody.appendChild(row);
@@ -41,12 +41,17 @@ $(document).ready(function () {
     });
 
     document.addEventListener('click', (event) => {
+        const searchResults = document.getElementById('searchResults');
+        const searchResultsBody = document.getElementById('searchResultsBody');
         if (event.target !== searchInput && event.target !== searchResults) {
-            searchResults.classList.remove('show');
+            $("#searchResults").hide();
         }
     });
 
     searchResults.addEventListener('click', (event) => {
         event.stopPropagation();
     });
+    $("tr .search").click(function () {
+        alert("asfasf");
+    })
 });

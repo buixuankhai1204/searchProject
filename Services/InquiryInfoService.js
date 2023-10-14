@@ -6,6 +6,9 @@ module.exports = class InquiryInfoService {
         if(listTask === []) {
             return [[], false]
         } else {
+            for (let i = 0; i < listTask.length; i++) {
+                listTask[i].contents = listTask[i].contents.slice(0,200);
+            }
             return [listTask, true]
         }
     }
@@ -16,9 +19,13 @@ module.exports = class InquiryInfoService {
         }
         const listTaskByContents = await inquiryInfoModel.getListTaskByContents(contents);
         console.log(listTaskByContents);
+
         if(listTaskByContents === []) {
             return [[], false]
         } else {
+            for (let i = 0; i < listTaskByContents.length; i++) {
+                listTaskByContents[i].contents = listTaskByContents[i].contents.slice(0,200);
+            }
             return [listTaskByContents, true]
         }
     }
